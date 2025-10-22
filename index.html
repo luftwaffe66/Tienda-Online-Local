@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caribbean Treasures | Authentic Punta Cana Souvenirs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --caribbean-blue: #1E90FF;
+            --turquoise: #40E0D0;
+            --sandy-beige: #F5DEB3;
+            --coral: #FF7F50;
+            --palm-green: #2E8B57;
+            --white: #FFFFFF;
+            --dark-blue: #003366;
+            --gold: #D4AF37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--caribbean-blue), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo-icon i {
+            color: var(--white);
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        
+        .logo-text span {
+            color: var(--gold);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--caribbean-blue);
+            background-color: rgba(30, 144, 255, 0.1);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            z-index: 1001;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--caribbean-blue), var(--gold));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6);
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Mobile Menu Panel */
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 999;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu-panel.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .close-menu:hover {
+            background: #f5f5f5;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0 20px;
+        }
+        
+        .mobile-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 14px 20px;
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .mobile-menu a:hover {
+            background: rgba(30, 144, 255, 0.1);
+            color: var(--caribbean-blue);
+            transform: translateX(5px);
+        }
+        
+        .mobile-menu a::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu a:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1550338861-b7cfeaf8ffd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 650px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark-blue);
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--caribbean-blue), var(--gold));
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+        
+        .about-text p {
+            margin-bottom: 12px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Products Section */
+        .products {
+            background-color: #f8f9fa;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 18px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--dark-blue);
+        }
+        
+        .product-info p {
+            color: #666;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--coral);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--caribbean-blue), var(--gold));
+            color: var(--white);
+        }
+        
+        .testimonials .section-title h2 {
+            color: var(--white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .testimonial-text::before {
+            content: """;
+            font-size: 3rem;
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--caribbean-blue);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+        
+        .contact-details {
+            margin-bottom: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--caribbean-blue), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: var(--white);
+            font-size: 1rem;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 1rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 18px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--dark-blue);
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 50px 0 25px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+            color: var(--dark-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+        
+        /* Brand Identity Elements */
+        .brand-story {
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.05), rgba(212, 175, 55, 0.05));
+            padding: 50px 0;
+            margin: 50px 0;
+            border-radius: 12px;
+        }
+        
+        .brand-elements {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .brand-element {
+            text-align: center;
+            max-width: 180px;
+        }
+        
+        .brand-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--caribbean-blue), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .brand-element h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .brand-element p {
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                margin-top: 120px;
+                height: auto;
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .btn {
+                padding: 12px;
+                width: 100%;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .product-image {
+                height: 160px;
+            }
+            
+            .product-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                gap: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .section-title h2::after {
+                width: 50px;
+            }
+            
+            .about-text h3 {
+                font-size: 1.4rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .brand-elements {
+                gap: 20px;
+            }
+            
+            .brand-element {
+                max-width: 150px;
+            }
+            
+            .brand-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+            
+            .brand-element h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-treasure-chest"></i>
+                    </div>
+                    <div class="logo-text">Caribbean <span>Treasures</span></div>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- Mobile Menu Panel -->
+    <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-treasure-chest"></i>
+                </div>
+                <div class="logo-text">Caribbean <span>Treasures</span></div>
+            </div>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Authentic Caribbean Souvenirs from Punta Cana</h1>
+                <p>Discover unique handcrafted treasures that capture the spirit of the Dominican Republic. Perfect mementos to take home your tropical memories.</p>
+                <div class="hero-btns">
+                    <a href="#products" class="btn btn-primary">Shop Now</a>
+                    <a href="#about" class="btn btn-secondary" style="background: transparent; border: 2px solid white; color: white;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Identity Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Brand Identity</h2>
+            </div>
+            <div class="brand-story">
+                <div class="container">
+                    <p style="text-align: center; max-width: 800px; margin: 0 auto 25px; font-size: 1rem;">
+                        At Caribbean Treasures, we've crafted a brand that embodies the vibrant spirit of Punta Cana. Our identity reflects the rich cultural heritage, natural beauty, and warm hospitality of the Dominican Republic.
+                    </p>
+                    <div class="brand-elements">
+                        <div class="brand-element">
+                            <div class="brand-icon">
+                                <i class="fas fa-palm-tree"></i>
+                            </div>
+                            <h3>Nature Inspired</h3>
+                            <p>Our designs draw from the island's lush landscapes and turquoise waters</p>
+                        </div>
+                        <div class="brand-element">
+                            <div class="brand-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h3>Artisan Crafted</h3>
+                            <p>Every piece is handcrafted by local Dominican artisans</p>
+                        </div>
+                        <div class="brand-element">
+                            <div class="brand-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h3>Premium Quality</h3>
+                            <p>We select only the finest materials and craftsmanship</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Our Shop</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Gateway to Authentic Dominican Souvenirs</h3>
+                    <p>Located in the heart of Punta Cana, our family-owned shop has been serving tourists for over 15 years. We specialize in authentic, locally-made souvenirs that capture the vibrant culture and natural beauty of the Dominican Republic.</p>
+                    <p>Every item in our collection is carefully selected from local artisans across the island. From hand-carved wooden sculptures to vibrant paintings and traditional crafts, we ensure each piece tells a story of our rich heritage.</p>
+                    <p>We believe in sustainable tourism and fair trade practices, supporting local communities while providing you with meaningful keepsakes that last a lifetime.</p>
+                    <a href="#products" class="btn btn-primary" style="margin-top: 15px;">Explore Our Collection</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1550338861-b7cfeaf8ffd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Punta Cana Beach">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Souvenirs</h2>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Dominican Coffee">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dominican Coffee Gift Set</h3>
+                        <p>Premium roasted coffee beans from the mountains of the DR, packaged in a beautiful gift box.</p>
+                        <div class="price">$24.99</div>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge">Exclusive</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Larimar Jewelry">
+                    </div>
+                    <div class="product-info">
+                        <h3>Larimar Necklace</h3>
+                        <p>Genuine Larimar stone set in sterling silver. Larimar is found only in the Dominican Republic.</p>
+                        <div class="price">$89.99</div>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-badge">Handcrafted</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Wooden Carving">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hand-Carved Wooden Mask</h3>
+                        <p>Traditional Taino-inspired mask carved by local artisans from sustainable hardwood.</p>
+                        <div class="price">$45.00</div>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-badge">Premium</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Rum Set">
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Rum Gift Set</h3>
+                        <p>Collection of the finest Dominican rums with branded glasses and recipe booklet.</p>
+                        <div class="price">$59.99</div>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>This shop has the most authentic souvenirs I've found in Punta Cana. The Larimar jewelry is stunning and the staff helped me find the perfect gift for my wife.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Michael Johnson</h4>
+                            <p>From New York, USA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>I've visited Punta Cana five times and always make sure to stop by Caribbean Treasures. Their coffee sets are my go-to gift for friends back home. Great quality and fair prices!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SL</div>
+                        <div class="author-info">
+                            <h4>Sarah Lopez</h4>
+                            <p>From Madrid, Spain</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>The wooden carvings are incredible! I bought a Taino mask that now hangs in my living room as a conversation piece. The craftsmanship is exceptional.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Robert Kim</h4>
+                            <p>From Toronto, Canada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Visit Us or Get in Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Our Location</h3>
+                    <p>Conveniently located near the main tourist areas of Punta Cana, we're easy to find during your vacation.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Address</h4>
+                                <p>Boulevard Turístico del Este, Plaza Coral #45, Punta Cana, Dominican Republic</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+1 (809) 555-1234</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@caribbeantreasures.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Opening Hours</h4>
+                                <p>Daily: 9:00 AM - 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="What is this regarding?">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Caribbean Treasures</h3>
+                    <p>Your premier destination for authentic Dominican souvenirs and gifts. Supporting local artisans since 2008.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Popular Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Larimar Jewelry</a></li>
+                        <li><a href="#">Dominican Coffee</a></li>
+                        <li><a href="#">Rum & Cigars</a></li>
+                        <li><a href="#">Wooden Carvings</a></li>
+                        <li><a href="#">Art & Paintings</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates on new products and special offers.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address" style="width: 100%; padding: 8px; margin-top: 10px; border-radius: 5px; border: none;">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 10px;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Caribbean Treasures. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--coral);"></i> for travelers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+        
+        // Open mobile menu
+        hamburger.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('active');
+            mobileMenuPanel.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+        
+        // Close mobile menu
+        const closeMobileMenu = () => {
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenuPanel.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        };
+        
+        closeMenu.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+        // Close menu when resizing to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Close mobile menu if open
+                    if (mobileMenuPanel.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
+
